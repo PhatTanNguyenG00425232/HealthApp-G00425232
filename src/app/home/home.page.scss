@@ -1,27 +1,43 @@
-#container {
+/* Welcome Message Styles */
+#welcome-message {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-top: 50px; /* Increase top margin for more space */
+  margin-bottom: 30px; /* Add bottom margin for separation */
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+#welcome-message h1 {
+  font-size: 28px; /* Increase font size for heading */
+  color: #333;
+  margin-bottom: 10px; /* Add bottom margin for separation */
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#welcome-message p {
+  font-size: 18px; /* Increase font size for paragraph */
+  color: #666;
 }
 
-#container a {
-  text-decoration: none;
+/* Quick Access Buttons Styles */
+.quick-access {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px; /* Increase top margin for more space */
+}
+
+.quick-access ion-button {
+  margin-top: 20px; /* Increase top margin between buttons */
+  width: 80%;
+}
+
+/* Button Colors */
+ion-button {
+  --color: #007bff;
+}
+
+ion-button[color="primary"] {
+  --background: #007bff;
+}
+
+ion-button[color="primary"]:hover {
+  --background: #0056b3;
 }

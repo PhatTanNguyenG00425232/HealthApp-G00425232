@@ -1,20 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Health Tracker
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  
+  <div id="welcome-message">
+    <h1>Welcome to Health Tracker!</h1>
+    <p>Your personal companion for tracking health and wellness.</p>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <div class="quick-access">
+    <ion-button expand="block" routerLink="/activity-tracker" color="primary">
+      Activity Tracker
+    </ion-button>
+    <ion-button expand="block" routerLink="/nutrition-tracker" color="primary">
+      Nutrition Tracker
+    </ion-button>
+    <ion-button expand="block" routerLink="/mindfulness-meditation" color="primary">
+      Mindfulness & Meditation
+    </ion-button>
+    <ion-button expand="block" routerLink="/settings" color="primary">
+      Settings
+    </ion-button>
   </div>
 </ion-content>
