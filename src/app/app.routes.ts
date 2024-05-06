@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'activity-tracker',
     loadComponent: () => import('./activity-tracker/activity-tracker.page').then( m => m.ActivityTrackerPage)
   },
+  {
+    path:'nutrition-tracker',
+    loadComponent:()=>import('./nutrition-tracker/nutrition-tracker.page').then((m)=>m.NutritionTrackerPage)
+  },
 ];

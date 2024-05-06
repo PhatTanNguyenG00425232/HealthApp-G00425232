@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+    <ion-title>Meal Logging</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="getNutritionalInfo()">
+    <ion-item>
+      <ion-label position="floating">Enter food items and quantities</ion-label>
+      <ion-input type="text" (ionInput)="updateFoodQuery($event)" required></ion-input>
+    </ion-item>
+    
+    <ion-button expand="block" type="submit">Get Nutritional Info</ion-button>
+  </form>
+
+  <div *ngIf="foodQuery">You have entered: {{ foodQuery }}</div>
+  <ion-list *ngIf="nutritionalInfo">
+    <ion-item *ngFor="let item of nutritionalInfo.items">
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>Calories: {{ item.calories }}</p>
+        <p>Serving Size: {{ item.serving_size_g }} g</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
