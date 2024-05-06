@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'activity-tracker',
+    loadComponent: () => import('./activity-tracker/activity-tracker.page').then( m => m.ActivityTrackerPage)
+  },
 ];

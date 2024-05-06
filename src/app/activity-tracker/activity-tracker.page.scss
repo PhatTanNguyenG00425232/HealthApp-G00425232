@@ -1,0 +1,21 @@
+/* Center the content */
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Style activity data */
+  .activity-data {
+    text-align: center;
+  }
+  
+  .activity-data h2 {
+    margin-bottom: 20px;
+  }
+  
+  .activity-data ion-item {
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  

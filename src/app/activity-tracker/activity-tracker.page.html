@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Activity Tracker
+    </ion-title>
+    <ion-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Display Activity Data -->
+  <div class="activity-data">
+    <h2>Today's Activity</h2>
+    <ion-item>
+      <ion-label>Steps:</ion-label>
+      <ion-text>{{ data.steps }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Distance:</ion-label>
+      <ion-text>{{ data.distance }} km</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Active Minutes:</ion-label>
+      <ion-text>{{ data.activeMinutes }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Floors:</ion-label>
+      <ion-text>{{ data.floors }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Calorie Out:</ion-label>
+      <ion-text>{{ data.caloriesOut }}</ion-text>
+    </ion-item>
+  </div>
+</ion-content>
