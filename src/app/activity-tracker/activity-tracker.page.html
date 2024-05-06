@@ -5,34 +5,29 @@
     </ion-button>
     <ion-title>
         Activity Tracker
-    
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <!-- Display Activity Data -->
-  <div class="activity-data">
-    <h2>Today's Activity</h2>
-    <ion-item>
-      <ion-label>Steps:</ion-label>
-      <ion-text>{{ data.steps }}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>Distance:</ion-label>
-      <ion-text>{{ data.distance }} km</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>Active Minutes:</ion-label>
-      <ion-text>{{ data.activeMinutes }}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>Floors:</ion-label>
-      <ion-text>{{ data.floors }}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>Calorie Out:</ion-label>
-      <ion-text>{{ data.caloriesOut }}</ion-text>
-    </ion-item>
-  </div>
+  <form (ngSubmit)="GetDailyData()">
+  <ion-item>
+      <ion-label position="floating">Enter your activity</ion-label>
+      <ion-input type="text" (ionInput)="updateActivity($event)" required></ion-input>
+  </ion-item>
+  
+  <!-- Button to calculate calories -->
+  <ion-button expand="block" type = "submit">Calculate Calories</ion-button>
+  </form>
+  <!-- Display calculated calories -->
+ 
+    <ion-list *ngIf="caloriesInfo">
+      <ion-item *ngFor="let item of caloriesInfo">
+        <ion-label>
+          <h2>{{ item.name }}</h2>
+          <p>Calories per hour: {{ item.calories_per_hour }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+ 
 </ion-content>
