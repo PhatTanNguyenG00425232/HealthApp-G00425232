@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+    <ion-title>Water Intake Calculator</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Body Weight (kg)</ion-label>
+    <ion-input type="number" (ionInput)="UpdateBodyWeight($event)" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Age</ion-label>
+    <ion-input type="number" (ionInput)="UpdateAge($event)" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select (ionChange)="updateGender($event.detail.value)" required>
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+    </ion-select>
+    
+  </ion-item>
+  <ion-button expand="block" (click)="calculateWaterIntake()">Calculate Water Intake</ion-button>
+  <ion-button expand="block" (click)="startTimer()" [disabled]="!waterIntake">Start Timer</ion-button>
+
+  <h1 *ngIf="waterIntake">Your minimum intake Water: {{waterIntake}} Liters</h1>
+</ion-content>

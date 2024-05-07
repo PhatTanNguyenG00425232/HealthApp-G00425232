@@ -18,4 +18,8 @@ export const routes: Routes = [
     path:'nutrition-tracker',
     loadComponent:()=>import('./nutrition-tracker/nutrition-tracker.page').then((m)=>m.NutritionTrackerPage)
   },
+  {
+    path: 'water-intake-calculator',
+    loadComponent: () => import('./water-intake-calculator/water-intake-calculator.page').then( m => m.WaterIntakeCalculatorPage)
+  },
 ];
