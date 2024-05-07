@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+    <ion-title>Weather Forecast</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngIf="weatherInfo">
+    <ion-card-header>
+      Weather Information
+    </ion-card-header>
+    <ion-card-content>
+      <p>Temperature: {{ weatherInfo.main.temp }}</p>
+      <p>Humidity: {{ weatherInfo.main.humidity }}</p>
+      <!-- Add more weather details here -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

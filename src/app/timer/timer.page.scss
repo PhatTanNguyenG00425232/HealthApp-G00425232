@@ -15,7 +15,11 @@
     border: 10px solid #e5e5e5; /* Increase border thickness for a bigger circle */
     transform: rotate(-90deg);
     z-index: 1;
-  }
+    stroke-dasharray: 440; /* Circumference of a circle with radius 70 (2 * π * 70) */
+  stroke-dashoffset: 0; /* Offset initially set to 0 */
+  transition: stroke-dashoffset 1s linear; /* Transition animation */
+}
+
   
   
 .timer {
@@ -25,10 +29,23 @@
     transform: translate(-50%, -50%);
     margin: 0;
     font-size: 36px; /* Increase font size for bigger text */
-    font-weight: bold;
+    font-weight: 24px;
     z-index: 2; /* Ensure the timer is above the circle */
   }
   
+  @keyframes progress {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: calc(2 * 3.14159 * 100); /* Circumference of the circle */
+    }
+  }
+  
+  .progress-circle.active {
+    stroke-dasharray: calc(2 * 3.14159 * 100); /* Circumference of the circle */
+    animation: progress linear 86400s infinite; /* 24 hours in seconds */
+  }
   .water-intake {
     display: flex;
     align-items: center; /* Center items vertically */

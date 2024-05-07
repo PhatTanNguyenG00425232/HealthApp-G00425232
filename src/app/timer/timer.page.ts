@@ -11,6 +11,7 @@ import { IonIcon } from '@ionic/angular/standalone';
   styleUrls: ['./timer.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonBackButton,IonButton,IonItem,IonSelectOption,IonLabel,IonInput,IonSelect,IonIcon,IonButtons]
+  
 })
 export class TimerPage implements OnInit {
   countdown: number = 86400; // 24 hours in seconds
@@ -19,11 +20,14 @@ export class TimerPage implements OnInit {
   glassesTaken: number = 0;
   circleDashArray: number = 283; // Circumference of a circle with radius 45 (2πr)
   circleDashOffset: number = 283; // Full circumference
+  targetGlasses: number = 0; // Store the target number of glasses of water
+
   constructor(private router: Router, private storage: Storage) { }
 
   async ngOnInit() {
     await this.initStorage();
     await this.loadSavedCountdown();
+    this.loadTargetGlasses();
     this.startTimer();
   }
 
@@ -42,19 +46,54 @@ export class TimerPage implements OnInit {
         } else {
           clearInterval(this.timer);
           this.timerRunning = false;
-          // Here, you can add logic to handle what happens when the timer reaches 0
-          // For example, navigate to another page or show a message
+          console.log("Glasses taken:", this.glassesTaken, "Target Glasses:", this.targetGlasses); // Add this line
+          // Check if the user has taken enough glasses of water
+          this.compareGlassesTakenAndTarget(); // Call the comparison method
         }
       }, 1000); // Run the timer every second (1000 milliseconds)
     }
   }
-
+  
+  compareGlassesTakenAndTarget() {
+    if (this.countdown <= 0 && this.glassesTaken < this.targetGlasses) {
+      // If the timer has run out and the user hasn't taken enough glasses, show a notification
+      // You can customize this according to your UI framework or requirements
+      alert('Oops! You were not able to reach your water intake goal.');
+    } else if (this.glassesTaken >= this.targetGlasses) {
+      // If the user has taken enough glasses, show a congratulations notice
+      // You can customize this according to your UI framework or requirements
+      alert('Congratulations! You have successfully reached your water intake goal.');
+  
+      // Reset the timer and countdown
+      this.countdown = 86400; // Reset to 24 hours
+      this.startTimer(); // Start the timer again
+      this.glassesTaken=0;
+      // Clear all storage
+      this.storage.clear().then(() => {
+        console.log('All storage cleared successfully.');
+      }).catch((error) => {
+        console.error('Error clearing storage:', error);
+      });
+      this.router.navigate(['/home']);
+    }
+  }
+  
   async loadSavedCountdown() {
     const val = await this.storage.get('countdown');
     if (val !== null) {
       this.countdown = val;
     }
   }
+
+  loadTargetGlasses() {
+    this.storage.get('glassesOfWater').then((val) => {
+      if (val !== null) {
+        this.targetGlasses = val;
+        console.log("Target Glasses:", this.targetGlasses); // Add this line
+      }
+    });
+  }
+  
 
   formatTime(seconds: number): string {
     const hours = Math.floor(seconds / 3600);
@@ -76,5 +115,6 @@ export class TimerPage implements OnInit {
 
   addWater() {
     this.glassesTaken++;
+    this.compareGlassesTakenAndTarget();
   }
 }
