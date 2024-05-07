@@ -18,14 +18,14 @@ export class WaterIntakeCalculatorPage {
   age: number;
   gender: string;
   waterIntake: number;
-  glassesOfWater: number; // Declare glassesOfWater property
+  glassesOfWater: number; 
 
   constructor(private router: Router, private storage: Storage) {
     this.bodyWeight = 0;
     this.age = 0;
     this.gender = '';
     this.waterIntake = 0;
-    this.glassesOfWater = 0; // Initialize glassesOfWater property
+    this.glassesOfWater = 0; 
   }
 
   ionViewWillEnter() {
@@ -34,29 +34,24 @@ export class WaterIntakeCalculatorPage {
 
   async initStorage() {
     await this.storage.create();
-    // Retrieve user input data from storage if available
+ 
     this.bodyWeight = parseFloat(await this.storage.get('bodyWeight')) || 0;
     this.age = parseFloat(await this.storage.get('age')) || 0;
     this.gender = await this.storage.get('gender') || '';
-
-    // If there's existing input, calculate water intake and glasses of water
     if (this.bodyWeight > 0 && this.age > 0 && this.gender) {
       this.calculateWaterIntake();
     }
   }
 
   calculateWaterIntake() {
-    // Calculate water intake only if all required inputs are available
+
     if (this.bodyWeight > 0 && this.age > 0 && this.gender) {
-      // Calculate minimum water intake based on body weight, age, and gender
       if (this.gender === "male") {
         this.waterIntake = this.bodyWeight * 0.03;
       } else if (this.gender === "female") {
         this.waterIntake = this.bodyWeight * 0.025;
       }
-      // Additional calculations based on age or other factors can be added here
 
-      // Round water intake to two decimal places
       this.waterIntake = Math.round(this.waterIntake * 100) / 100;
 
       // Calculate minimum glasses of water (200ml per glass)

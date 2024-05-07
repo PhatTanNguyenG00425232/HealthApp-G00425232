@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class NutritionService {
   private apiUrl = 'https://api.calorieninjas.com/v1/nutrition';
-  private apiKey = 'cKhFysIhmyFI0turftpccA==WfO8xOPYipJciSgx'; // Replace 'YOUR_API_KEY' with your actual API key
+  private apiKey = 'cKhFysIhmyFI0turftpccA==WfO8xOPYipJciSgx'; 
 
   constructor(private http: HttpClient) { }
 

@@ -12,7 +12,6 @@ export class DailyTrackService {
   constructor(private http: HttpClient) { }
 
   
-  // Method to get daily tracking data, with an optional query parameter
   GetDailyData(activity: string): Observable<any> {
     const headers = new HttpHeaders().set('X-Api-Key', this.apiKey);
     return this.http.get(`${this.apiUrl}?activity=${activity}`, { headers });
