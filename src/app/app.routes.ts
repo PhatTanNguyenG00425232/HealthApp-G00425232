@@ -22,4 +22,8 @@ export const routes: Routes = [
     path: 'water-intake-calculator',
     loadComponent: () => import('./water-intake-calculator/water-intake-calculator.page').then( m => m.WaterIntakeCalculatorPage)
   },
+  {
+    path: 'timer',
+    loadComponent: () => import('./timer/timer.page').then( m => m.TimerPage)
+  },
 ];

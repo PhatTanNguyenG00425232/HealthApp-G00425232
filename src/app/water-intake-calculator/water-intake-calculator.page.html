@@ -26,7 +26,7 @@
     
   </ion-item>
   <ion-button expand="block" (click)="calculateWaterIntake()">Calculate Water Intake</ion-button>
-  <ion-button expand="block" (click)="startTimer()" [disabled]="!waterIntake">Start Timer</ion-button>
+  <ion-button expand="block" (click)="startTimer()" [disabled]="!waterIntake" routerLink="/timer">Start Timer</ion-button>
 
   <h1 *ngIf="waterIntake">Your minimum intake Water: {{waterIntake}} Liters</h1>
 </ion-content>

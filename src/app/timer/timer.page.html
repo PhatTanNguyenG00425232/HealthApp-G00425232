@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+    <ion-title>Water Intake Tracking</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="timer-container">
+    <div class="progress-circle" [style.strokeDasharray]="circleDashArray" [style.strokeDashoffset]="circleDashOffset"></div>
+    <h2 *ngIf="countdown > 0" class="timer">{{ formatTime(countdown) }}</h2>
+    <h2 *ngIf="countdown <= 0" class="timer">Time's up!</h2>
+  </div>
+
+
+  <div class="water-intake">
+  
+    <ion-icon name="pint"></ion-icon>
+    <div class="glass-count">{{ glassesTaken }}</div>
+    <ion-button (click)="addWater()">+</ion-button>
+  </div>
+</ion-content>
